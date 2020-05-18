@@ -64,19 +64,19 @@ namespace PurchaseAnalysis
             }
             string getRequest = "";
             foreach (var key in count.Keys)
-                getRequest += "&" + key + "=" + count[key].ToString();
+                getRequest += "&" + key + "=" + count[key].ToString().Replace(',', '.').Replace(".", "%2E");
             if (count.Keys.Count > 0)
             {
                 getRequest = "?" + getRequest.Substring(1);
                 Image image = new Image
                 {
-                    Source = "http://mathwave.pythonanywhere.com/pie_chart" + getRequest
+                    Source = "https://mathwave.pythonanywhere.com/pie_chart" + getRequest
                 };
                 sl.Children.Add(image);
             }
             Dictionary<string, double> count2 = new Dictionary<string, double>();
             StackLayout sl2 = new StackLayout();
-            foreach(var item in count.Keys)
+            foreach (var item in count.Keys)
             {
                 if (!item.Contains("?"))
                 {
@@ -96,13 +96,13 @@ namespace PurchaseAnalysis
             }
             getRequest = "";
             foreach (var key in count2.Keys)
-                getRequest += "&" + key + "=" + count2[key].ToString();
+                getRequest += "&" + key + "=" + count2[key].ToString().Replace(',', '.').Replace(".", "%2E");
             if (count2.Keys.Count > 0)
             {
                 getRequest = "?" + getRequest.Substring(1);
                 Image image = new Image
                 {
-                    Source = "http://mathwave.pythonanywhere.com/pie_chart" + getRequest
+                    Source = "https://mathwave.pythonanywhere.com/pie_chart" + getRequest
                 };
                 sl2.Children.Add(image);
             }
@@ -110,6 +110,6 @@ namespace PurchaseAnalysis
             sv1.Content = sl2;
         }
 
-        
+
     }
 }

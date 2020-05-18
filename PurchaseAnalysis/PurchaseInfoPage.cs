@@ -32,6 +32,7 @@ namespace PurchaseAnalysis
         void Delete(object sender, EventArgs e)
         {
             MainPage.list.Remove(entity);
+            Navigation.PopModalAsync();
         }
     }
 }
